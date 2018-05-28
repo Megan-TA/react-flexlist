@@ -1,13 +1,14 @@
 {
   "name": "react-flexlist",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A pull-down slider react component",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "gulp"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,23 @@
   "bugs": {
     "url": "https://github.com/Megan-TA/react-flexlist/issues"
   },
-  "homepage": "https://github.com/Megan-TA/react-flexlist#readme"
+  "homepage": "https://github.com/Megan-TA/react-flexlist#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-plumber": "^1.2.0",
+    "react": "^16.4.0"
+  }
 }
