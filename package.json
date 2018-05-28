@@ -1,47 +1,26 @@
 {
-  "_from": "react-flexlist",
-  "_id": "react-flexlist@1.0.0",
-  "_inBundle": false,
-  "_integrity": "sha512-t51z64OtvOcz8v9aAg9i7XaG0SpnljE0tkkosLM9v5KWtId8xQmjobaDYyLSU/nWfKHr+FcujPWLq9L+2gZuhw==",
-  "_location": "/react-flexlist",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "react-flexlist",
-    "name": "react-flexlist",
-    "escapedName": "react-flexlist",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/react-flexlist/-/react-flexlist-1.0.0.tgz",
-  "_shasum": "ac3290caec7e227b696012f83f96cffe543be8a1",
-  "_spec": "react-flexlist",
-  "_where": "d:\\Users\\chen_huang\\Desktop\\github\\npm",
-  "author": {
-    "name": "chen214"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
-  "description": "A pull-down slider react component",
-  "email": "2658924454@qq.com",
-  "keywords": [
-    "flexlist",
-    "react-flexlist",
-    "flatlist",
-    "react-flatlist",
-    "drop",
-    "down"
-  ],
-  "license": "MIT",
-  "main": "index.js",
   "name": "react-flexlist",
-  "scripts": {
+  "version": "1.0.0",
+  "description": "A pull-down slider react component",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
   },
-  "version": "1.0.0"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Megan-TA/react-flexlist.git"
+  },
+  "keywords": [
+    "react-flexlist",
+    "flexlist"
+  ],
+  "author": "chen214",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Megan-TA/react-flexlist/issues"
+  },
+  "homepage": "https://github.com/Megan-TA/react-flexlist#readme"
 }
