@@ -4,8 +4,9 @@
  * @Author: chen_huang 
  * @Date: 2018-05-22 17:11:59 
  * @Last Modified by: chen_huang
- * @Last Modified time: 2018-05-24 14:47:27
+ * @Last Modified time: 2018-06-11 18:40:38
  */
+import getOrderList from './test'
 
 function Ajax (url, optiopns, method = 'post') {
     return new Promise ((resolve, reject) => {
@@ -33,5 +34,6 @@ function Ajax (url, optiopns, method = 'post') {
 
 
 module.exports = {
-    Ajax
+    Ajax,
+    getOrderList
 }

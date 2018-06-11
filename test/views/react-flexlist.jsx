@@ -3,9 +3,9 @@
  * @Author: chen_huang
  * @Date: 2018-05-25 18:57:10
  * @Last Modified by: chen_huang
- * @Last Modified time: 2018-06-11 19:57:07
+ * @Last Modified time: 2018-06-11 15:04:53
  */
-import React from 'react'
+let React = require('react')
 
 class ReactFlexList extends React.Component {
     constructor (props) {
@@ -27,6 +27,7 @@ class ReactFlexList extends React.Component {
             tabName: props.options.tabName || null,
             height: props.options.height || '500px'
         }
+        this.resize.bind(this)
     }
 
     componentDidMount () {
@@ -43,15 +44,17 @@ class ReactFlexList extends React.Component {
         } = this.config
 
         let {
-            className
-        } = this.props.children.props
+            options: {
+                childrenClassName
+            }
+        } = this.props
 
         let globalBoxDOM = document.querySelectorAll('#react-flatlist')[0]
         this.config.globalBoxDOM = globalBoxDOM
 
         document.getElementsByTagName('body')[0].style.overflow = 'hidden'
 
-        _wrapDOM = document.querySelectorAll(`.${className}`)[0]
+        _wrapDOM = document.querySelectorAll(`.${childrenClassName}`)[0]
         _appendToDownDOM = document.querySelectorAll('.toDownTmpl')[0]
 
         _appendToDownDOMHeight = -_appendToDownDOM.offsetHeight
@@ -68,7 +71,7 @@ class ReactFlexList extends React.Component {
         // 初始化时滚动条在最顶端
         document.documentElement.scrollTop = 0
 
-        globalBoxDOM.addEventListener('scroll', _this.resize.bind(_this), false)
+        globalBoxDOM.addEventListener('scroll', _this.resize, false)
 
         globalBoxDOM.addEventListener('touchstart', (e) => {
             if (!_this.allowMove()) return
@@ -82,7 +85,7 @@ class ReactFlexList extends React.Component {
             if (!_this.allowMove()) return
             _tempY = e.touches[0].pageY - _startY
             if (_tempY > 0) {
-                if (globalBoxDOM.scrollTop == 0) {
+                if (this.scrollTop == 0) {
                     _tempY /= 3
                     // 处理一些设备默认的事件 导致无法下拉的bug
                     e.preventDefault()
@@ -166,13 +169,7 @@ class ReactFlexList extends React.Component {
     loosen (distance) {
         let _this = this
         let TimeEntity = null
-        let {
-            options: {
-                toDownDistance
-            }
-        } = this.props
-        toDownDistance = toDownDistance || 20
-        if (distance > toDownDistance) {
+        if (distance > 100) {
             this.fixed()
             this.config.flag = false
             // document.getElementsByTagName('body')[0].style.overflowY = 'hidden'
@@ -258,8 +255,7 @@ class ReactFlexList extends React.Component {
             _refresh({
                 pageNo: this.config.pageNo
             })
-            console.log('已刷新新数据')
-            resolve(true)
+            resolve()
         })
     }
 
@@ -281,6 +277,7 @@ class ReactFlexList extends React.Component {
             this.config.pageNo = 2
             this.config.tabName = tabName
         }
+
         loadMore({
             pageNo: this.config.pageNo
         }).then((resolved, rejected) => {
@@ -291,7 +288,6 @@ class ReactFlexList extends React.Component {
             }
             _this.config.flag = true
             toUpRefreshTxtDOM.style['display'] = 'none'
-            console.log('已加载到新数据')
         })
         return false
     }
@@ -356,4 +352,4 @@ class ReactFlexList extends React.Component {
 }
 
 
-export default ReactFlexList
+module.exports = ReactFlexList

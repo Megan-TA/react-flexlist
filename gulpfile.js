@@ -29,11 +29,10 @@ gulp.task('babel', ['copy'], () => {
 })
 
 gulp.task('watch', () => {
-	gulp
+	return gulp
 		.watch([
-			'./!(node_modules|publish)**/*',
-			'./!(node_modules|publish)'
-		], ['babel'])
+			'./test/src/*.jsx'
+		], ['_test'])
 		.on('change', function(event) {
 			console.log('File ' + event.path + ' was ' + event.type + ', running tasks...')
 		})
@@ -43,4 +42,14 @@ gulp.task('watch', () => {
 
 })
 
+gulp.task('_test', () => {
+	return gulp
+			.src('./test/src/*.jsx')
+			.pipe(babel())
+			.pipe(plumber())
+			.pipe(gulp.dest('./test/dist/'))
+})
+
 gulp.task('default', ['babel'])
+
+gulp.task('test', ['_test', 'watch'])
