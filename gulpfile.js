@@ -2,30 +2,42 @@ var path = require('path')
 var gulp = require('gulp')
 var plumber = require('gulp-plumber')
 var babel = require('gulp-babel')
+var del = require('del')
+var uglify = require('gulp-uglify')
+var pump = require('pump')
 
-var dest = './publish'
+var dest = 'publish'
 
-gulp.task('copy', () => {
+gulp.task('copy', ['clean:publish'], () => {
 	return gulp
-		.src([
-			'./!(node_modules|publish)/**/*',
-			'./!(node_modules|publish)',
-			'./.!(git)*',
-			'./!*.js'
-		])
-		.pipe(plumber())
-		.pipe(gulp.dest(dest))
+			.src([
+				'./!(node_modules|mock|test|!(index).js)/*',
+				'./!(node_modules|mock|test|!(index).js)'
+			])
+			.pipe(plumber())
+			.pipe(gulp.dest(dest))
 })
 
-gulp.task('babel', ['copy'], () => {
-	return gulp
-		.src([
-			'./!(node_modules|publish)/**/*.js',
-			'./*.js'
-		])
-		.pipe(babel())
-		.pipe(plumber())
-		.pipe(gulp.dest(dest))
+gulp.task('handleJS', ['copy'], (cb) => {
+	pump([
+		gulp.src([
+			'publish/*.js',
+			'publish/**/*.js'
+		]),
+		babel(),
+		gulp.dest(dest)
+	], cb)
+})
+
+gulp.task('compress', ['handleJS'], (cb) => {
+	pump([
+		gulp.src([
+			'publish/*.js',
+			'publish/**/*.js'
+		]),
+		uglify(),
+		gulp.dest(dest)
+	], cb)
 })
 
 gulp.task('watch', () => {
@@ -50,6 +62,12 @@ gulp.task('_test', () => {
 			.pipe(gulp.dest('./test/dist/'))
 })
 
-gulp.task('default', ['babel'])
+gulp.task('clean:publish', () => {
+	return del([
+		'publish'
+	])
+})
+
+gulp.task('default', ['compress'])
 
 gulp.task('test', ['_test', 'watch'])
