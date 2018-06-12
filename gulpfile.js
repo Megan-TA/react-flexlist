@@ -35,7 +35,11 @@ gulp.task('compress', ['handleJS'], (cb) => {
 			'publish/*.js',
 			'publish/**/*.js'
 		]),
-		uglify(),
+		uglify({
+			compress: {
+				drop_console: true
+			}
+		}),
 		gulp.dest(dest)
 	], cb)
 })
