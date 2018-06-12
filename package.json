@@ -1,6 +1,6 @@
 {
   "name": "react-flexlist",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A pull-down slider react component",
   "main": "index.js",
   "directories": {
@@ -52,7 +52,7 @@
     "pump": "^3.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "3.5.5",
+    "webpack-dev-server": "2.7.1"
   }
 }

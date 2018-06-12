@@ -25,7 +25,9 @@ refresh/loadMore 采用new Promise最好 async/await需要额外引入babel-poly
 
 > 特别说明
 
-如果初始列表数据/刷新数据 小于设置的外层盒子高度 默认不会触发上滑，只有下拉刷新事件
+1. 如果初始列表数据/刷新数据 小于设置的外层盒子高度 默认不会触发上滑，只有下拉刷新事件
+
+2. 需要在项目下自行引入react、react-dom、babel等react运行环境所需的库
 
 示例如下：
 
