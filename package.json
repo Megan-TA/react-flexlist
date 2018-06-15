@@ -1,6 +1,6 @@
 {
   "name": "react-flexlist",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "A pull-down slider react component",
   "main": "index.js",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.js",
-    "prod": "webpack --colors --config webpack.config.js",
+    "prod": "gulp",
     "publish": "npm publish ./publish"
   },
   "repository": {
